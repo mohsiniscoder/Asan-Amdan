@@ -4,8 +4,6 @@ import Orders from "../../Models/ordersModels.js";
 
 // This File Will Be Rechecked Again For Validations And Professionally Coding.
 
-
-
 // getting all order
 export const getAllOrdersController = async (req, res) => {
     try {
