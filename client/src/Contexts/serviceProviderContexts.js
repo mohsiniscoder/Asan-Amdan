@@ -37,7 +37,7 @@ const ServiceProviderAuth=({children})=>{
                             Authorization: serviceProviderAuth?.token,
                         },
                     });
-                    console.log("it is the response for serviceprovider",response.data.data);
+                    // console.log("it is the response for serviceprovider",response.data.data);
                 if (response.data.success) {
                     setServiceProviderAuth(
                         {
