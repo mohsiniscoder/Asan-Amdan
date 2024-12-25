@@ -15,6 +15,7 @@ import CreateGig from './components/ServiceProvider/CreateGig';
 import GigDetailPage from './components/GigComponents/GigDetailPage';
 import UpdateGig from './components/ServiceProvider/UpdateGigComponent';
 import PurchaseGigPage from './components/GigComponents/PurchaseGigPage';
+import ClientDashboard from './components/Dashboards/ClientDashboard';
 const App = () => {
   return (
     <>
@@ -33,6 +34,7 @@ const App = () => {
         {/* <Route path="/gig/:id" element={<GigDetail />} /> */}
         <Route path="/provide-service" element={<ServiceProviderForm />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/client-dashboard" element={<ClientDashboard />} />
         <Route path="/service-provider-dashboard" element={<ServiceProviderDashboard />} />
         <Route path="/Gig/addGig" element={<CreateGig/>} />
         <Route path="/gig/:gigId" element={<GigDetailPage />} />

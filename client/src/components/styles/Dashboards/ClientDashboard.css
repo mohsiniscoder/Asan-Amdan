@@ -1,0 +1,162 @@
+/* Overall Dashboard Container */
+.client-dashboard {
+    display: flex;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background: linear-gradient(to bottom right, #ffffff, #f8f9fa);
+    overflow: hidden;
+}
+
+/* Side Panel Styling */
+.side-panel {
+    width: 20%;
+    color: #333;
+    background-color: #f8f9fa;
+    border-right: 2px solid #ddd;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    padding-top: 20px;
+}
+
+/* Side Panel Heading */
+.side-panel h2 {
+    margin-bottom: 20px;
+    font-size: 1.4em;
+    color: #fd7e14;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Side Panel List */
+.side-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+/* Side Panel List Items */
+.side-panel li {
+    width: calc(100% - 20px); /* Ensures hover doesn't exceed panel width */
+    margin: 5px auto; /* Centers the item */
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s ease;
+    border-radius: 5px;
+}
+
+.side-panel li:hover {
+    background-color: #fd7e14;
+    color: white;
+    transform: scale(1.05);
+}
+
+.side-panel li.active {
+    background-color: #fd7e14;
+    color: white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Main Content Area */
+.main-content {
+    width: 80%;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    overflow-y: auto;
+}
+
+/* Main Content Heading */
+.main-content h2 {
+    font-size: 1.8em;
+    color: #fd7e14;
+    margin-bottom: 20px;
+    text-align: left;
+    border-bottom: 2px solid #fd7e14;
+    padding-bottom: 10px;
+}
+
+/* Main Content Paragraph */
+.main-content p {
+    line-height: 1.8;
+    color: #555;
+}
+
+/* Scrollbar Styling for Content Area */
+.main-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #fd7e14, #e05e10);
+    border-radius: 10px;
+}
+
+.main-content::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+/* Buttons */
+button {
+    background-color: #fd7e14;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    margin: 10px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #e05e10;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(0) scale(1);
+}
+
+/* Responsiveness for Mobile */
+@media (max-width: 768px) {
+    .client-dashboard {
+        flex-direction: column;
+    }
+
+    .side-panel {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        border-right: none;
+        border-bottom: 2px solid #e6e6e6;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    .main-content {
+        width: 100%;
+        padding: 20px;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .side-panel li {
+        padding: 10px;
+        font-size: 0.9em;
+    }
+}
