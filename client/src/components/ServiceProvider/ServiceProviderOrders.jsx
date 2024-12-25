@@ -52,7 +52,6 @@ const ServiceProviderOrders = () => {
       alert("Failed to approve order. Please try again.");
     }
   };
-
   const handleReject = async (orderId) => {
     try {
       await axios.put(

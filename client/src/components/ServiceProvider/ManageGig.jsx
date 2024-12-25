@@ -85,9 +85,6 @@ const ManageGigs = () => {
     // Error State
     if (error) return <p className="error">{error}</p>;
 
-    // Empty Gigs State
-    if (gigs.length === 0) return <p>No gigs found. Add one to get started!</p>;
-
     return (
         <div className="manage-gigs">
             <div className="header">
@@ -96,26 +93,30 @@ const ManageGigs = () => {
                     Add Gig
                 </button>
             </div>
-            <div className="gig-list">
-                {gigs.map((gig) => (
-                    <div key={gig._id} className="gig-card">
-                        <div className="gig-details">
-                            <h4>{gig.title}</h4>
-                            <p>{gig.description}</p>
-                            <p>Experience: {gig.experience} years</p>
-                            <p>Price: ${gig.price}</p>
-                            <p>Availability Hours: {gig.availabilityHours}</p>
-                            <p>Location: {gig.location}</p>
-                            <p>Category: {gig.category}</p>
-                            <p>Status: {gig.status}</p>
+            {gigs.length === 0 ? (
+                <p>No gigs found. Add one to get started!</p>
+            ) : (
+                <div className="gig-list">
+                    {gigs.map((gig) => (
+                        <div key={gig._id} className="gig-card">
+                            <div className="gig-details">
+                                <h4>{gig.title}</h4>
+                                <p>{gig.description}</p>
+                                <p>Experience: {gig.experience} years</p>
+                                <p>Price: ${gig.price}</p>
+                                <p>Availability Hours: {gig.availabilityHours}</p>
+                                <p>Location: {gig.location}</p>
+                                <p>Category: {gig.category}</p>
+                                <p>Status: {gig.status}</p>
+                            </div>
+                            <div className="gig-actions">
+                                <button onClick={() => handleUpdate(gig)}>Update</button>
+                                <button onClick={() => handleDelete(gig._id)}>Delete</button>
+                            </div>
                         </div>
-                        <div className="gig-actions">
-                            <button onClick={() => handleUpdate(gig)}>Update</button>
-                            <button onClick={() => handleDelete(gig._id)}>Delete</button>
-                        </div>
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 };
