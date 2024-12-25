@@ -16,7 +16,7 @@ const HomePage = () => {
 
   const fetchActiveGigs = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/v1/gig/getAllGigs", {
+      const response = await axios.get("http://localhost:4000/api/v1/gig/getApprovedGigs", {
         headers: {
           Authorization: `${localStorage.getItem("authToken")}`,
         },
