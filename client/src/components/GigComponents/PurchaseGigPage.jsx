@@ -10,7 +10,6 @@ const PurchaseGigPage = () => {
   const [purchaseDetails, setPurchaseDetails] = useState({
     message: "",
     additionalRequests: "",
-    categoryId: "",
     isTechnical: false,
   });
   const navigate = useNavigate(); // Hook to handle navigation
@@ -23,7 +22,7 @@ const PurchaseGigPage = () => {
       setGig(gigData);
       setPurchaseDetails((prev) => ({
         ...prev,
-        categoryId: gigData.categoryId, // Pre-fill categoryId from gig data
+        isTechnical: gigData.isTechnical || false, // Use default or fetched value
       }));
     } catch (err) {
       setError("Failed to fetch gig details. Please try again.");
@@ -51,7 +50,7 @@ const PurchaseGigPage = () => {
       const clientId = "loggedInUserId"; // Replace with actual client ID from auth context
       const serviceProviderId = gig?.serviceProviderId;
 
-      if (!clientId || !serviceProviderId || !gigId || !purchaseDetails.categoryId) {
+      if (!clientId || !serviceProviderId || !gigId) {
         alert("All required fields must be provided.");
         return;
       }
@@ -61,10 +60,12 @@ const PurchaseGigPage = () => {
         serviceProviderId,
         gigId,
         orderDetails: {
-          message: purchaseDetails.message,
-          additionalRequests: purchaseDetails.additionalRequests,
+          title: gig.title,
+          description: purchaseDetails.message || "No description provided.",
+          price: gig.price,
+          delivery_time: gig.deliveryTime || "N/A", // Use gig's delivery time
         },
-        categoryId: purchaseDetails.categoryId,
+        categoryId: gig.categoryId,
         isTechnical: purchaseDetails.isTechnical,
       });
 
