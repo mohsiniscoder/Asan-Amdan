@@ -92,7 +92,85 @@ export const addOrderController = async (req, res) => {
 };
 
 // updating order status
-export const updateOrderStatusController = async (req, res) => {
+// export const updateOrderStatusController = async (req, res) => {
+//     try {
+//         const { id } = req.params;
+//         const { status } = req.body;
+
+//         if (!status || !["pending", "in-progress", "completed", "cancelled"].includes(status)) {
+//             return res.status(400).json({ message: "Invalid or missing status." });
+//         }
+
+//         const updatedOrder = await Orders.findByIdAndUpdate(
+//             id,
+//             { orderStatus: status },
+//             { new: true, runValidators: true }
+//         );
+
+//         if (!updatedOrder) {
+//             return res.status(404).json({ message: "Order not found." });
+//         }
+
+//         res.status(200).json({ message: "Order status updated successfully.", order: updatedOrder });
+//     } catch (error) {
+//         res.status(500).json({ message: "Failed to update order status.", error: error.message });
+//     }
+// };
+
+
+export const updateClientOrderStatus = async (req, res) => {
+    try {
+        const { id } = req.params; // Order ID
+        const { status } = req.body; // New status
+
+        // Validate status
+        if (!status || !["pending", "in-progress", "completed", "cancelled"].includes(status)) {
+            return res.status(400).json({ message: "Invalid or missing status." });
+        }
+
+        // Fetch the order
+        const order = await Orders.findById(id);
+        if (!order) {
+            return res.status(404).json({ message: "Order not found." });
+        }
+
+        // Validate current status and transition
+        if (status === "completed" && order.orderStatus !== "in-progress") {
+            return res.status(400).json({ message: "Order can only be completed from in-progress status." });
+        }
+
+        // Update the order status
+        order.orderStatus = status;
+        await order.save();
+
+        // If completed, update service provider stats
+        let updatedServiceProvider = null;
+        if (status === "completed") {
+            updatedServiceProvider = await serviceProvider.findByIdAndUpdate(
+                order.serviceProviderId,
+                {
+                    $inc: { ordersCompleted: 1, overallEarnings: order.orderDetails.price },
+                },
+                { new: true } // Return the updated document
+            );
+
+            if (!updatedServiceProvider) {
+                return res.status(404).json({ message: "Service provider not found." });
+            }
+        }
+
+        res.status(200).json({
+            message: "Order status updated successfully.",
+            order,
+            serviceProvider: updatedServiceProvider || null, // Only include if updated
+        });
+    } catch (error) {
+        res.status(500).json({ message: "Failed to update order status.", error: error.message });
+    }
+};
+
+
+export const updateServiceProviderOrderStatus = async (req, res) => {
     try {
         const { id } = req.params;
         const { status } = req.body;
@@ -116,4 +194,3 @@ export const updateOrderStatusController = async (req, res) => {
         res.status(500).json({ message: "Failed to update order status.", error: error.message });
     }
 };
-
