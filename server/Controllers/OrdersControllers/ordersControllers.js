@@ -177,7 +177,7 @@ export const updateClientOrderStatus = async (req, res) => {
 export const updateServiceProviderOrderStatus = async (req, res) => {
     try {
         const { id } = req.params;
-        const { status } = req.body;
+        const { status } = req.body
 
         if (!status || !["pending", "in-progress", "completed", "cancelled"].includes(status)) {
             return res.status(400).json({ message: "Invalid or missing status." });
@@ -190,7 +190,7 @@ export const updateServiceProviderOrderStatus = async (req, res) => {
         );
 
         if (!updatedOrder) {
-            return res.status(404).json({ message: "Order not found." });
+            return res.status(404).json({ message: "Order not found." })
         }
 
         res.status(200).json({ message: "Order status updated successfully.", order: updatedOrder });

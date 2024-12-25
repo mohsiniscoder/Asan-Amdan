@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { ServiceProviderAuth, useServiceProviderAuth } from "../../Contexts/serviceProviderContexts";
+import { useServiceProviderAuth } from "../../Contexts/serviceProviderContexts";
 
 const ServiceProviderOrders = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const {serviceProviderAuth,setServiceProviderAuth}=useServiceProviderAuth();
+  const { serviceProviderAuth } = useServiceProviderAuth();
 
   const serviceProviderId = serviceProviderAuth?.user?._id;
 
   // Fetch orders for the service provider
   const fetchOrders = async () => {
-    if(!serviceProviderId){
-        alert("No service provider");
-        return;
+    if (!serviceProviderId) {
+      alert("No service provider");
+      return; 
     }
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/v1/orders/getServiceProviderOrders/${serviceProviderId}`,{
-            headers: {
-              Authorization: `${localStorage.getItem('Token')}`,
-            },
+        `http://localhost:4000/api/v1/orders/getServiceProviderOrders/${serviceProviderId}`,
+        {
+          headers: {
+            Authorization: `${localStorage.getItem("Token")}`,
+          },
         }
       );
       setOrders(response.data.providerOrders || []);
@@ -29,6 +30,45 @@ const ServiceProviderOrders = () => {
       setError("Failed to fetch orders. Please try again.");
     } finally {
       setLoading(false);
+    }
+  };
+
+  // Approve order (update status to "in-progress")
+  const handleApprove = async (orderId) => {
+    try {
+      await axios.put(
+        `http://localhost:4000/api/v1/orders/updateServiceProviderOrderStatus/${orderId}`,
+        { status: "in-progress" },
+        {
+          headers: {
+            Authorization: `${localStorage.getItem("Token")}`,
+          },
+        }
+      );
+      alert("Order approved successfully!");
+      fetchOrders(); // Refresh orders after updating
+    } catch (err) {
+      console.error("Failed to approve order", err);
+      alert("Failed to approve order. Please try again.");
+    }
+  };
+
+  const handleReject = async (orderId) => {
+    try {
+      await axios.put(
+        `http://localhost:4000/api/v1/orders/updateServiceProviderOrderStatus/${orderId}`,
+        { status: "cancelled" },
+        {
+          headers: {
+            Authorization: `${localStorage.getItem("Token")}`,
+          },
+        }
+      );
+      alert("Order cancelled successfully!");
+      fetchOrders(); // Refresh orders after updating
+    } catch (err) {
+      console.error("Failed to reject order", err);
+      alert("Failed to reject order. Please try again.");
     }
   };
 
@@ -45,9 +85,20 @@ const ServiceProviderOrders = () => {
       {orders.length === 0 ? (
         <p>No orders received yet.</p>
       ) : (
-        <table style={{ width: "100%", borderCollapse: "collapse", marginTop: "20px" }}>
+        <table
+          style={{
+            width: "100%",
+            borderCollapse: "collapse",
+            marginTop: "20px",
+          }}
+        >
           <thead>
-            <tr style={{ backgroundColor: "#f4f4f4", borderBottom: "1px solid #ddd" }}>
+            <tr
+              style={{
+                backgroundColor: "#f4f4f4",
+                borderBottom: "1px solid #ddd",
+              }}
+            >
               <th style={{ padding: "10px", textAlign: "left" }}>Order ID</th>
               <th style={{ padding: "10px", textAlign: "left" }}>Title</th>
               <th style={{ padding: "10px", textAlign: "left" }}>Price</th>
@@ -59,13 +110,16 @@ const ServiceProviderOrders = () => {
             {orders.map((order) => (
               <tr key={order._id} style={{ borderBottom: "1px solid #ddd" }}>
                 <td style={{ padding: "10px" }}>{order._id}</td>
-                <td style={{ padding: "10px" }}>{order.orderDetails?.title || "N/A"}</td>
-                <td style={{ padding: "10px" }}>${order.orderDetails?.price || "0.00"}</td>
+                <td style={{ padding: "10px" }}>
+                  {order.orderDetails?.title || "N/A"}
+                </td>
+                <td style={{ padding: "10px" }}>
+                  ${order.orderDetails?.price || "0.00"}
+                </td>
                 <td style={{ padding: "10px" }}>{order.orderStatus || "Pending"}</td>
                 <td style={{ padding: "10px" }}>
-                  {/* Example of actions: View or Update */}
                   <button
-                    onClick={() => alert(`View Order ${order._id}`)}
+                    onClick={() => handleApprove(order._id)}
                     style={{
                       backgroundColor: "#4CAF50",
                       color: "white",
@@ -76,12 +130,12 @@ const ServiceProviderOrders = () => {
                       borderRadius: "3px",
                     }}
                   >
-                    View
+                    Approve
                   </button>
                   <button
-                    onClick={() => alert(`Update Order ${order._id}`)}
+                   onClick={() => handleReject(order._id)}
                     style={{
-                      backgroundColor: "#008CBA",
+                      backgroundColor: "#f44336",
                       color: "white",
                       border: "none",
                       padding: "5px 10px",
@@ -89,7 +143,7 @@ const ServiceProviderOrders = () => {
                       borderRadius: "3px",
                     }}
                   >
-                    Update
+                    Reject
                   </button>
                 </td>
               </tr>
