@@ -1,6 +1,5 @@
-// GigDetailPage.jsx
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const GigDetailPage = () => {
@@ -8,11 +7,12 @@ const GigDetailPage = () => {
   const [gig, setGig] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate(); // Hook to handle navigation
 
   // Fetch the gig details
   const fetchGigDetails = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/v1/gig//getGigById/${gigId}`);
+      const response = await axios.get(`http://localhost:4000/api/v1/gig/getGigById/${gigId}`);
       setGig(response.data.gig);
     } catch (err) {
       setError("Failed to fetch gig details. Please try again.");
@@ -24,6 +24,11 @@ const GigDetailPage = () => {
   useEffect(() => {
     fetchGigDetails();
   }, [gigId]);
+
+  // Handler for the "Purchase Gig" button
+  const handlePurchase = () => {
+    navigate(`/purchase/${gigId}`); // Redirect to the purchase page with gigId
+  };
 
   if (loading) return <p>Loading gig details...</p>;
   if (error) return <p>{error}</p>;
@@ -39,8 +44,11 @@ const GigDetailPage = () => {
           <p><b>Location:</b> {gig.location}</p>
           <p><b>Availability:</b> {gig.availabilityHours}</p>
           <p><b>Experience:</b> {gig.experience} years</p>
-          {/* Add more fields as required */}
           <button>Contact the Service Provider</button>
+          {/* Purchase Gig Button */}
+          <button onClick={handlePurchase} style={{ marginTop: "20px", backgroundColor: "#4CAF50", color: "white", padding: "10px 20px", border: "none", borderRadius: "5px", cursor: "pointer" }}>
+            Purchase Gig
+          </button>
         </>
       )}
     </div>
