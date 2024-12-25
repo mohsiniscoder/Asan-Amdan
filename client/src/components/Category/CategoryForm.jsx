@@ -6,8 +6,8 @@ const CategorySearchBar = () => {
     const [categories, setCategories] = useState({ technical: [], nonTechnical: [] });
     const [selectedCategory, setSelectedCategory] = useState('');
     const [isTechnical, setIsTechnical] = useState(true); // Default to technical
-
     // Fetch categories from the backend API
+    
     useEffect(() => {
         const getCategories = async () => {
             const fetchedCategories = await fetchCategories();  // Call the external fetchCategories function
