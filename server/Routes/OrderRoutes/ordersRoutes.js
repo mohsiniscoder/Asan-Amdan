@@ -1,6 +1,6 @@
 import express from "express"
-import { addOrderController, getAllOrdersController, getClientOrdersController, getNonTechOrdersController, getServiceProviderOrdersController, getTechOrdersController, updateClientOrderStatus, updateOrderStatusController, updateServiceProviderOrderStatus } from "../../Controllers/OrdersControllers/ordersControllers";
-import { authenticateServiceProvider, checkUser } from "../../Middlewares/authMiddlewares";
+import { addOrderController, getAllOrdersController, getClientOrdersController, getNonTechOrdersController, getServiceProviderOrdersController, getTechOrdersController, updateClientOrderStatus, updateServiceProviderOrderStatus } from "../../Controllers/OrdersControllers/ordersControllers.js";
+import { authenticateServiceProvider, checkUser } from "../../Middlewares/authMiddlewares.js";
 const router=express.Router();
 
 
