@@ -57,7 +57,7 @@ export const authenticateServiceProvider = async (req, res, next) => {
 export const checkAdmin=async(req,res,next)=>{
     try {
         const token = req.headers.authorization;
-        console.log("this is token in admin checking", token);
+        // console.log("this is token in admin checking", token);
 
         if (!token) {
             return res.status(401).json({
@@ -105,7 +105,7 @@ export const checkAdmin=async(req,res,next)=>{
 export const checkUser=async(req,res,next)=>{
     try {
         const token = req.headers.authorization;
-        console.log("this is token in user checking", token);
+        // console.log("this is token in user checking", token);
         if (!token) {
             return res.status(401).json({
                 success: false,
