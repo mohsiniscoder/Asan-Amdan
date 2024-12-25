@@ -272,6 +272,31 @@ export const getPendingGigsController = async (req, res) => {
     });
   }
 };
+export const getApprovedGigsController = async (req, res) => {
+  try {
+    const approveGigs = await Gig.find({ status: "approved" });
+    console.log(`This is gigs" ${approveGigs}`);
+    if (!approveGigs || approveGigs.length === 0) {
+      return res.status(404).json({
+        success: false,
+        msg: "No approve gigs found",
+      });
+    }
+
+    console.log("approve gigs:", approveGigs);
+    res.status(200).json({
+      success: true,
+      gigs: approveGigs,
+    });
+  } catch (error) {
+    console.error("Error while fetching approve gigs:", error);
+    res.status(500).json({
+      success: false,
+      msg: "Server error. Could not fetch approve gigs.",
+    });
+  }
+};
+
 
 export const updateGigStatusController = async (req, res) => {
   try {

@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/CategoryList.css";
+import ".././styles/Category/CategoryList.css";
 
 const CategoryList = ({ categories, deleteCategory, editCategory }) => {
   return (
