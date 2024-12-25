@@ -75,6 +75,8 @@ export const addOrderController = async (req, res) => {
             return res.status(400).json({ message: "All required fields must be provided." });
         }
 
+        // console.log("this is request ",req.body);
+
         const newOrder = new Orders({
             clientId,
             serviceProviderId,
@@ -87,6 +89,7 @@ export const addOrderController = async (req, res) => {
         await newOrder.save();
         res.status(201).json({ message: "Order created successfully.", order: newOrder });
     } catch (error) {
+        console.log("this is error",error);
         res.status(500).json({ message: "Failed to create order.", error: error.message });
     }
 };

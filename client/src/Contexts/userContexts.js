@@ -14,7 +14,7 @@ const AuthProvider=({children})=>{
     useEffect(() => {
         const getData = async () => {
             try {
-                const data =  localStorage.getItem('Token');
+                const data =  localStorage.getItem('authToken');
                 if (data) {
                     setUserAuth({
                         token: data
@@ -36,6 +36,7 @@ const AuthProvider=({children})=>{
                             Authorization: userAuth?.token,
                         },
                     });
+                    console.log("it is user data in authcontext",response.data.data);
                 if (response.data.success) {
                     setUserAuth(
                         {

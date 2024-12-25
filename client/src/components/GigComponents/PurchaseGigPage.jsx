@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "../../Contexts/userContexts";
 
 const PurchaseGigPage = () => {
   const { gigId } = useParams(); // Get the gigId from the URL
@@ -12,12 +13,18 @@ const PurchaseGigPage = () => {
     additionalRequests: "",
     isTechnical: false,
   });
+
+  const {userAuth,setUserAuth}=useAuth();
+
+
   const navigate = useNavigate(); // Hook to handle navigation
-  
+
   // Fetch gig details
   const fetchGigDetails = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/v1/gig/getGigById/${gigId}`);
+      const response = await axios.get(
+        `http://localhost:4000/api/v1/gig/getGigById/${gigId}`
+      );
       const gigData = response.data.gig;
       setGig(gigData);
       setPurchaseDetails((prev) => ({
@@ -47,7 +54,10 @@ const PurchaseGigPage = () => {
   // Handle purchase submission
   const handlePurchase = async () => {
     try {
-      const clientId = "loggedInUserId"; // Replace with actual client ID from auth context
+      const clientId = userAuth?.user?._id;
+      alert(`client ID ${userAuth.user}`);
+
+      
       const serviceProviderId = gig?.serviceProviderId;
 
       if (!clientId || !serviceProviderId || !gigId) {
@@ -55,19 +65,27 @@ const PurchaseGigPage = () => {
         return;
       }
 
-      const response = await axios.post(`http://localhost:4000/api/v1/addOrder`, {
-        clientId,
-        serviceProviderId,
-        gigId,
-        orderDetails: {
-          title: gig.title,
-          description: purchaseDetails.message || "No description provided.",
-          price: gig.price,
-          delivery_time: gig.deliveryTime || "N/A", // Use gig's delivery time
+      const response = await axios.post(
+        `http://localhost:4000/api/v1/orders/addOrder`,
+        {
+          clientId,
+          serviceProviderId,
+          gigId,
+          orderDetails: {
+            title: gig.title,
+            description: purchaseDetails.message || "No description provided.",
+            price: gig.price,
+            delivery_time: gig.deliveryTime || "N/A", // Use gig's delivery time
+          },
+          categoryId: gig.categoryId,
+          isTechnical: purchaseDetails.isTechnical,
         },
-        categoryId: gig.categoryId,
-        isTechnical: purchaseDetails.isTechnical,
-      });
+        {
+          headers: {
+            Authorization: `${localStorage.getItem("authToken")}`,
+          },
+        }
+      );
 
       if (response.status === 201) {
         alert("Purchase successful!");
@@ -86,8 +104,12 @@ const PurchaseGigPage = () => {
       {gig && (
         <>
           <h1>Purchase {gig.title}</h1>
-          <p><b>Price:</b> ${gig.price}</p>
-          <p><b>Description:</b> {gig.description}</p>
+          <p>
+            <b>Price:</b> ${gig.price}
+          </p>
+          <p>
+            <b>Description:</b> {gig.description}
+          </p>
           <div className="purchase-form">
             <h3>Purchase Details</h3>
             <textarea
