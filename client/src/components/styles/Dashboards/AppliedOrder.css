@@ -1,0 +1,115 @@
+.applied-orders {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.applied-orders h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.applied-orders ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.applied-orders li {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+}
+
+.applied-orders li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.applied-orders h3 {
+    font-size: 18px;
+    color: #444;
+    margin: 0 0 10px;
+}
+
+.applied-orders p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+}
+
+.applied-orders li::before {
+    content: '';
+    display: block;
+    height: 4px;
+    width: 50px;
+    background: linear-gradient(90deg, #fd7e14, #ff4500);
+    margin-bottom: 10px;
+    border-radius: 2px;
+}
+
+.applied-orders li:hover::before {
+    width: 80px;
+    transition: width 0.3s ease;
+}
+/* Dropdown container */
+.order-filter {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  /* Label for the dropdown */
+  .order-filter label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  /* Styling for the dropdown */
+  .order-filter select {
+    padding: 8px 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  /* On hover, change border color */
+  .order-filter select:hover {
+    border-color: #fd7e14; /* Your main orange color */
+  }
+  
+  /* On focus, make the border bold and highlight the dropdown */
+  .order-filter select:focus {
+    border-color: #fd7e14;
+    outline: none;
+    box-shadow: 0 0 5px rgba(253, 126, 20, 0.4);
+  }
+  
+  /* Optional: style the option text */
+  .order-filter option {
+    padding: 8px 10px;
+    font-size: 16px;
+  }
+  
+  /* Optional: Add spacing between options */
+  .order-filter select option {
+    padding: 12px;
+  }
+  
