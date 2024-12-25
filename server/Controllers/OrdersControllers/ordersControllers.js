@@ -38,14 +38,17 @@ export const getNonTechOrdersController = async (req, res) => {
 export const getClientOrdersController = async (req, res) => {
     try {
         const { id } = req.params;
+        console.log("these are the client orders and his id",id);
 
-        const clientOrders = await Orders.find({ clientId: id }).populate("gigId categoryId serviceProviderId", "-password");
+        const clientOrders = await Orders.find({ clientId: id });
+        console.log("these are the client orders",clientOrders);
         if (!clientOrders.length) {
             return res.status(404).json({ message: "No orders found for the specified client." });
         }
 
         res.status(200).json({ message: "Client orders retrieved successfully.", clientOrders });
     } catch (error) {
+        console.log("error in getting client order",error);
         res.status(500).json({ message: "Failed to retrieve client orders.", error: error.message });
     }
 };
@@ -194,6 +197,7 @@ export const updateServiceProviderOrderStatus = async (req, res) => {
 
         res.status(200).json({ message: "Order status updated successfully.", order: updatedOrder });
     } catch (error) {
+        console.log("it is error in updating service provider order status",error);
         res.status(500).json({ message: "Failed to update order status.", error: error.message });
     }
 };
