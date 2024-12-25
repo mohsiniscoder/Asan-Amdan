@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import "../styles/Dashboards/ServiceProviderDashboard.css";
 import GigDetailsPage from "../ServiceProvider/GigDetailsPage";
 import ManageGigs from "../ServiceProvider/ManageGig.jsx";
+import ServiceProviderOrders from "../ServiceProvider/ServiceProviderOrders.jsx";
 
 const ServiceProviderDashboard = () => {
     const [activeTab, setActiveTab] = useState("gigs");
@@ -17,6 +18,8 @@ const ServiceProviderDashboard = () => {
                 // return <Profile />;
             case "settings":
                 // return <Settings />;
+            case "Orders":
+                return <ServiceProviderOrders />;
             default:
                 return <h2>Select an option from the panel</h2>;
         }
@@ -43,6 +46,12 @@ const ServiceProviderDashboard = () => {
                         onClick={() => setActiveTab("settings")}
                     >
                         Settings
+                    </li>
+                    <li 
+                        className={activeTab === "Orders" ? "active" : ""}
+                        onClick={() => setActiveTab("Orders")}
+                    >
+                        Orders
                     </li>
                 </ul>
             </div>
