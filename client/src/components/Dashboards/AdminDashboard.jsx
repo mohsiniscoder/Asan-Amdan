@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ManageUsers from "../Admin/ManageUsers.jsx";
 import ManageServiceProviders from "../Admin/ManageServiceProviders.jsx";
 import "../styles/Dashboards/AdminDashboard.css";
-import CategoryForm from "../Category/CategoryForm.jsx";
+import CategoryPage from "../../Pages/CategoryPage"
 import PendingGigs from "../Admin/PendingGigs.jsx";
 
 
@@ -18,7 +18,7 @@ const AdminDashboard = () => {
             case "gigs":
                 return <PendingGigs />;
             case "categories":
-                return <CategoryForm />;
+                return <CategoryPage />;
             default:
                 return <h2>Select an option from the panel</h2>;
         }
