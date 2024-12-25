@@ -1,5 +1,5 @@
 import express from "express"
-import { addOrderController, getAllOrdersController, getClientOrdersController, getNonTechOrdersController, getServiceProviderOrdersController, getTechOrdersController, updateOrderStatusController } from "../../Controllers/OrdersControllers/ordersControllers";
+import { addOrderController, getAllOrdersController, getClientOrdersController, getNonTechOrdersController, getServiceProviderOrdersController, getTechOrdersController, updateClientOrderStatus, updateOrderStatusController, updateServiceProviderOrderStatus } from "../../Controllers/OrdersControllers/ordersControllers";
 import { authenticateServiceProvider, checkUser } from "../../Middlewares/authMiddlewares";
 const router=express.Router();
 
@@ -10,7 +10,8 @@ router.get("/getNonTechOrders",getNonTechOrdersController);
 router.get("/getClientOrders/:id",checkUser,getClientOrdersController);
 router.get("/getServiceProviderOrders/:id",authenticateServiceProvider,getServiceProviderOrdersController);
 router.post("/addOrder",checkUser,addOrderController);
-router.put("/updateOrderStatus/:id", updateOrderStatusController); 
+router.put("/updateClientOrderStatus/:id",checkUser,updateClientOrderStatus); 
+router.put("/updateServiceProviderOrderStatus/:id",authenticateServiceProvider,updateServiceProviderOrderStatus); 
 
 
 
