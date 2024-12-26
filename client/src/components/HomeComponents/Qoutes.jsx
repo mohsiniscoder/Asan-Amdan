@@ -10,6 +10,7 @@ const quotesList = [
   "Mohsin is the Boss of our company",
   "Abrar is a Hardworking MERN Stack Developer in our company",
   "Awais is a very good Web Designer"
+
 ];
 
 const Quotes = () => {
