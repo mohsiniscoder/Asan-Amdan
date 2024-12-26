@@ -1,0 +1,32 @@
+.quotes-section {
+    background-color: #1a1a1a;
+    color: #ffcc00;
+    padding: 40px 20px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .quote {
+    font-size: 1.8rem;
+    font-style: italic;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1.8rem;
+    background-color: #ffcc00;
+    animation: blink 0.8s step-start infinite;
+    margin-left: 5px;
+  }
+  
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+  

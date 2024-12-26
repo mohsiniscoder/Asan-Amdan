@@ -1,44 +1,116 @@
 .header {
-    background-color: #343a40;
-    color: #ffffff;
-    padding: 20px;
+    background-color: #ffffff;
+    color: #343a40;
+    padding: 30px 20px;
     text-align: center;
     font-family: "Arial", sans-serif;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
     align-items: center;
-  }
-  
-  .category-form {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.category-form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    width: 300px;
-  }
-  
-  .category-form input[type="text"] {
-    padding: 10px;
-    border: 1px solid #ccc;
+    gap: 15px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.category-form input[type="text"] {
+    padding: 12px;
+    border: 1px solid #ddd;
     border-radius: 5px;
-  }
-  
-  .radio-group {
+    font-size: 14px;
+}
+
+.radio-group {
     display: flex;
-    justify-content: space-around;
-  }
-  
-  .category-form button {
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.radio-group label {
+    font-size: 14px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.category-form button {
     background-color: #fd7e14;
-    color: white;
+    color: #fff;
     padding: 10px;
     border: none;
     border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
-  }
-  
-  .category-form button:hover {
+    transition: background-color 0.3s ease;
+}
+
+.category-form button:hover {
     background-color: #e86b0d;
-  }
-  
+}
+
+.category-list {
+    width: 100%;
+    max-width: 500px;
+}
+
+.category-list h2 {
+    color: #343a40;
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.category-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.category-list li {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.category-list li button {
+    background-color: transparent;
+    color: #fd7e14;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.category-list li button:hover {
+    color: #e86b0d;
+}
+
+.category-list li input[type="text"],
+.category-list li select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.category-list li button:first-of-type {
+    margin-right: 10px;
+}
