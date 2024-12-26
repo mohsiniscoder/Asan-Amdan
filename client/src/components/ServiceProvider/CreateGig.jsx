@@ -158,7 +158,7 @@ const CreateGig = () => {
       <form onSubmit={handleSubmit} className="create-gig-form">
         {error && <p className="error">{error}</p>}
         {success && <p className="success">{success}</p>}
-
+  
         <input
           type="text"
           name="title"
@@ -167,7 +167,7 @@ const CreateGig = () => {
           onChange={handleChange}
           required
         />
-
+  
         <input
           type="number"
           name="experience"
@@ -179,7 +179,7 @@ const CreateGig = () => {
           step="1"
           max="50"
         />
-
+  
         <textarea
           name="description"
           placeholder="Gig Description"
@@ -188,7 +188,7 @@ const CreateGig = () => {
           rows="5"
           required
         ></textarea>
-
+  
         <div className="form-row">
           <input
             type="number"
@@ -198,34 +198,39 @@ const CreateGig = () => {
             onChange={handleChange}
             required
           />
-
-          <label>Start Time:</label>
-          <input
-            type="time"
-            name="startTime"
-            value={startTime}
-            onChange={(e) => setStartTime(e.target.value)}
-            required
-          />
-
-          <label>End Time:</label>
-          <input
-            type="time"
-            name="endTime"
-            value={endTime}
-            onChange={(e) => setEndTime(e.target.value)}
-            required
-          />
-
           <input
             type="text"
             name="availabilityHours"
             placeholder="Availability Hours"
             value={gigData.availabilityHours}
-            readOnly
+          
           />
         </div>
-
+  
+        <div className="form-row">
+          <div className="time-input">
+            <label>Start Time:</label>
+            <input
+              type="time"
+              name="startTime"
+              value={startTime}
+              onChange={(e) => setStartTime(e.target.value)}
+              required
+            />
+          </div>
+  
+          <div className="time-input">
+            <label>End Time:</label>
+            <input
+              type="time"
+              name="endTime"
+              value={endTime}
+              onChange={(e) => setEndTime(e.target.value)}
+              required
+            />
+          </div>
+        </div>
+  
         <div className="form-row">
           <label>
             Is this a Technical Gig?
@@ -250,19 +255,28 @@ const CreateGig = () => {
             ))}
           </select>
         </div>
-
+  
         <div className="image-upload">
           <label htmlFor="image">Upload Image</label>
-          <input type="file" id="image" name="image" accept="image/*" onChange={handleImageChange} />
-          {imagePreview && <img src={imagePreview} alt="Preview" className="image-preview" />}
+          <input
+            type="file"
+            id="image"
+            name="image"
+            accept="image/*"
+            onChange={handleImageChange}
+          />
+          {imagePreview && (
+            <img src={imagePreview} alt="Preview" className="image-preview" />
+          )}
         </div>
-
+  
         <button type="submit" className="submit-btn">
           Create Gig
         </button>
       </form>
     </div>
   );
+  
 };
 
 export default CreateGig;
