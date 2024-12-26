@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import "../styles/Quotes.css";
 
 const quotesList = [
-//   "Success usually comes to those who are too busy to be looking for it.",
+  "Success usually comes to those who are too busy to be looking for it.",
 //   "Don’t be afraid to give up the good to go for the great.",
 //   "Opportunities don’t happen. You create them.",
 //   "Success is not in what you have, but who you are.",
 //   "The way to get started is to quit talking and begin doing.",
-  "Mohsin is the Boss and you should never argue with him."
+  "Mohsin is the Boss of our company",
+  "Abrar is a Hardworking MERN Stack Developer in our company",
+  "Awais is a very good Web Designer"
 ];
 
 const Quotes = () => {

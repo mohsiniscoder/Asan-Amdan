@@ -5,13 +5,9 @@ import SliderContainer from "../components/HomeComponents/SliderContainer";
 import GigList from "../components/GigComponents/GigList";
 import { slides } from "../data/slides";
 import CategorySearchBar from "../components/HomeComponents/CategorySearchBar";
-// import HeroSection from "../components/HomeComponents/HeroSection";
-// import FeaturedCategories from "../components/HomeComponents/FeaturedCategories";
-// import Testimonials from "../components/HomeComponents/Testimonials";
-// import Statistics from "../components/HomeComponents/Statistics";
 import Footer from "../components/HomeComponents/Footer";
 import Quotes from "../components/HomeComponents/Qoutes";
-// import NewsletterSignup from "../components/HomeComponents/NewsLetterSignUp";
+import HeroSection from "../components/HomeComponents/HeroSection";
 
 const HomePage = () => {
   const [gigs, setGigs] = useState([]);
@@ -29,7 +25,7 @@ const HomePage = () => {
       });
       setGigs(response.data.gigs);
     } catch (err) {
-      setError("Failed to fetch gigs. Please try again.");
+      // setError("Failed to fetch gigs. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -49,7 +45,7 @@ const HomePage = () => {
   return (
     <>
       <SliderContainer slides={slides} />
-      {/* <HeroSection /> */}
+      {/* <HeroSection/> */}
       <CategorySearchBar />
       <section className="gigs-section">
         <div className="container">
@@ -57,11 +53,7 @@ const HomePage = () => {
           <GigList gigs={gigs} onGigClick={handleGigClick} />
         </div>
       </section>
-      {/* <FeaturedCategories /> */}
       <Quotes/>
-      {/* <Statistics /> */}
-      {/* <Testimonials /> */}
-      {/* <NewsletterSignup /> */}
       <Footer />
     </>
   );

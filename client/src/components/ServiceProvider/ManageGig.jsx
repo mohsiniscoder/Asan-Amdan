@@ -34,8 +34,10 @@ const ManageGigs = () => {
                     setError(response.data.msg || "Failed to fetch gigs.");
                 }
             } catch (err) {
-                setError(`Server error. Could not retrieve gigs. ${err}`);
-                console.error("Error fetching gigs:", err);
+                if(err.status !== 404){
+                    setError(`Server error. Could not retrieve gigs. ${err}`);
+                    console.error("Error fetching gigs:", err);
+                }
             } finally {
                 setLoading(false);
             }
