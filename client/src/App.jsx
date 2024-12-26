@@ -43,8 +43,6 @@ const App = () => {
         <Route path="/provide-service" element={<ServiceProviderForm />} />
         <Route path="/gig/:gigId" element={<GigDetailPage />} />
 
-
-
         {/* authenticating service provider */}
         {serviceProviderAuth?.token ?
           <>
@@ -72,7 +70,6 @@ const App = () => {
 
           </>
           : ""}
-
       </Routes>
     </>
   );
