@@ -11,7 +11,11 @@ const quotesList = [
   "A Website Created By A Mern Stack Developer Mahr Abrar And His Employees",
   "Mohsin is the Boss of our company",
   "Abrar is a Hardworking MERN Stack Developer in our company",
+  "Awais is a very good Web Designer",
+  "Mohsin is the Boss of our company",
+  "Abrar is a Hardworking MERN Stack Developer in our company",
   "Awais is a very good Web Designer"
+
 ];
 
 const Quotes = () => {

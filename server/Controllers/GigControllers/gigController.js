@@ -108,7 +108,7 @@ export const getGigByIdController = async (req, res) => {
 export const getGigByCategoryIdController = async (req, res) => {
   try {
     const { categoryId } = req.params
-    console.log("getting gigs by category controller id", categoryId);
+    console.log("getting gigs by category controller id", categoryId)
     if(!categoryId){
       return res.status(400).json({
         success: false,
