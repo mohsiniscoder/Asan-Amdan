@@ -1,5 +1,5 @@
-// CategorySearchBar.js
-import React, { useState, useEffect } from 'react';// Import your existing fetchCategories function
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import "../styles/Search/CategorySearchBar.css";
 import fetchCategories from "../Fetch/FetchCategories";
 
@@ -7,6 +7,7 @@ const CategorySearchBar = () => {
     const [categories, setCategories] = useState({ technical: [], nonTechnical: [] });
     const [selectedCategory, setSelectedCategory] = useState('');
     const [isTechnical, setIsTechnical] = useState(true); // Default to technical
+    const navigate = useNavigate(); // Initialize useNavigate
 
     // Fetch categories from the backend API
     useEffect(() => {
@@ -44,7 +45,8 @@ const CategorySearchBar = () => {
         setSelectedCategory(categoryId);
 
         if (categoryId) {
-            window.location.href = `/search?category=${categoryId}`;
+            // Navigate to the search page with the selected category as a query param
+            navigate(`/search?category=${categoryId}`);
         }
     };
 
