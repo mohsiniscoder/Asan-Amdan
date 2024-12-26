@@ -23,7 +23,7 @@ const HomePage = () => {
       });
       setGigs(response.data.gigs);
     } catch (err) {
-      setError("Failed to fetch gigs. Please try again.");
+      // setError("Failed to fetch gigs. Please try again.");
     } finally {
       setLoading(false);
     }
