@@ -36,7 +36,7 @@ const AuthProvider=({children})=>{
                             Authorization: userAuth?.token,
                         },
                     });
-                    // console.log("it is user data in authcontext",response.data.data);
+                    console.log("it is user data in authcontext",response.data.data);
                 if (response.data.success) {
                     setUserAuth(
                         {

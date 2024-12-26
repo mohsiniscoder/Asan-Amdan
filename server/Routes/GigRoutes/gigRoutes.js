@@ -13,7 +13,7 @@ router.get('/getServiceProviderGigs/:serviceProviderId',authenticateServiceProvi
 router.get('/getPendingGigs',checkAdmin,getPendingGigsController);
 router.get('/getApprovedGigs',getApprovedGigsController);
 router.get('/getGigById/:gigId',getGigByIdController);
-router.get('getGigByCategoryId/:categoryId',getGigByCategoryIdController);
+router.get('/getGigByCategoryId/:categoryId',getGigByCategoryIdController);
 router.put('/updateGig/:gigId',authenticateServiceProvider,updateGigController);
 router.delete('/deleteGig/:gigId',authenticateServiceProvider,deleteGigController);
 router.put('/updateGigStatus/:gigId',checkAdmin,updateGigStatusController);

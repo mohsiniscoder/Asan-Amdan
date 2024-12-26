@@ -60,7 +60,7 @@ export const loginController = async (req, res) => {
             return res.status(401).json({ success: false, msg: "Invalid Credentials" });
         }
 
-        const token = generateToken(foundedUser._id,foundedUser.email,foundedUser.userName);
+        const token = generateToken(foundedUser._id,foundedUser.email,foundedUser.userName,foundedUser.isAdmin);
 
         const userResponse = {
             email: foundedUser.email,

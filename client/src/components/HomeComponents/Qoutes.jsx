@@ -7,14 +7,11 @@ const quotesList = [
 //   "Opportunities don’t happen. You create them.",
 //   "Success is not in what you have, but who you are.",
 //   "The way to get started is to quit talking and begin doing.",
-<<<<<<< HEAD
   // "Mohsin is the Boss and you should never argue with him."
-  "A Website Created By A Mern Stack Developer Mahr Abrar And His Employees"
-=======
+  "A Website Created By A Mern Stack Developer Mahr Abrar And His Employees",
   "Mohsin is the Boss of our company",
   "Abrar is a Hardworking MERN Stack Developer in our company",
   "Awais is a very good Web Designer"
->>>>>>> c19118c550112da3cd4d6e752e95d61cd3a147b0
 ];
 
 const Quotes = () => {

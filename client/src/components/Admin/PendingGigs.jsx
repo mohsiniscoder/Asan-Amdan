@@ -53,7 +53,7 @@ const PendingGigs = () => {
     <div>
       <h1>Pending Gigs</h1>
       <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
-        {gigs.map((gig) => (
+        {gigs?.map((gig) => (
           <div
             key={gig._id}
             style={{

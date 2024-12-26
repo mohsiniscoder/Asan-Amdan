@@ -1,4 +1,4 @@
-import { generateToken } from "../../Config/authConfig.js";
+import { generateServiceProviderToken, generateToken } from "../../Config/authConfig.js";
 import { comparePassword, hashPassword } from "../../Helpers/authHelpers.js";
 import serviceProvider from "../../Models/serviceProviderModel.js";
 
@@ -43,7 +43,7 @@ export const serviceProviderRegisterController = async (req, res) => {
 
         await newServiceProvider.save();
 
-        const token = generateToken(newServiceProvider._id,newServiceProvider.email,newServiceProvider.username);
+        const token = generateServiceProviderToken(newServiceProvider._id,newServiceProvider.email,newServiceProvider.username);
 
         const data = {
             _id: newServiceProvider._id,
@@ -85,7 +85,7 @@ export const serviceProviderLoginController = async (req, res) => {
             return res.status(401).json({ success: false, msg: "Invalid Credentials" });
         }
 
-        const token = generateToken(foundedUser._id, foundedUser.isAdmin);
+        const token = generateServiceProviderToken(foundedUser._id, foundedUser.isAdmin);
 
         const userResponse = {
             email: foundedUser.email,
