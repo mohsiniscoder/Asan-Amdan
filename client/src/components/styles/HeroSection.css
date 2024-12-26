@@ -1,0 +1,38 @@
+.hero-section {
+    /* background: url('https://img.freepik.com/free-photo/perplexed-worried-concerned-cute-redhead-student-college-girl-trying-choose-university-thinking-future-looking-pensive-upper-left-corner-bite-lip-frowning-thoughtful-blue-background_1258-309999.jpg?t=st=1735228473~exp=1735232073~hmac=983e180596b5a2db9bb797bf221b1abab4995af7a34fb9357f8d76a5933ad113&w=1060') center/cover no-repeat; */
+    padding: 80px 20px;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .hero-description {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  .cta-button {
+    background-color: #ff6600;
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: #e65c00;
+  }
+  
