@@ -1,4 +1,3 @@
-// HomePage.jsx
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -6,6 +5,13 @@ import SliderContainer from "../components/HomeComponents/SliderContainer";
 import GigList from "../components/GigComponents/GigList";
 import { slides } from "../data/slides";
 import CategorySearchBar from "../components/HomeComponents/CategorySearchBar";
+// import HeroSection from "../components/HomeComponents/HeroSection";
+// import FeaturedCategories from "../components/HomeComponents/FeaturedCategories";
+// import Testimonials from "../components/HomeComponents/Testimonials";
+// import Statistics from "../components/HomeComponents/Statistics";
+import Footer from "../components/HomeComponents/Footer";
+import Quotes from "../components/HomeComponents/Qoutes";
+// import NewsletterSignup from "../components/HomeComponents/NewsLetterSignUp";
 
 const HomePage = () => {
   const [gigs, setGigs] = useState([]);
@@ -34,7 +40,6 @@ const HomePage = () => {
   }, []);
 
   const handleGigClick = (gigId) => {
-    // Navigate to the GigDetail page, passing the gig's id as a parameter
     navigate(`/gig/${gigId}`);
   };
 
@@ -44,6 +49,7 @@ const HomePage = () => {
   return (
     <>
       <SliderContainer slides={slides} />
+      {/* <HeroSection /> */}
       <CategorySearchBar />
       <section className="gigs-section">
         <div className="container">
@@ -51,6 +57,12 @@ const HomePage = () => {
           <GigList gigs={gigs} onGigClick={handleGigClick} />
         </div>
       </section>
+      {/* <FeaturedCategories /> */}
+      <Quotes/>
+      {/* <Statistics /> */}
+      {/* <Testimonials /> */}
+      {/* <NewsletterSignup /> */}
+      <Footer />
     </>
   );
 };
