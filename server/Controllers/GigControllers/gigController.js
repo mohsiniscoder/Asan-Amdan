@@ -105,11 +105,40 @@ export const getGigByIdController = async (req, res) => {
   }
 };
 
+export const getGigByCategoryIdController = async (req, res) => {
+  try {
+    const { categoryId } = req.params
+    console.log("getting gigs by category controller id", categoryId);
+    if(!categoryId){
+      return res.status(400).json({
+        success: false,
+        msg: "Category ID is required",
+      });
+    }
+    const gigs = await Gig.find({ categoryId: categoryId });
+    if (!gigs) {
+      return res.status(200).json({
+        success: true,
+        gigs: [],
+        msg: "No gigs found for this category",
+      });
+    }
+   return res.status(200).json({
+      success: true,
+      gigs,
+    });
+  } catch (error) {
+    console.error("error while getting gigs for each category");
+    return res.status(500).json({ success: false, msg: "Internal Server Error", error: error });
+  }
+
+}
+
 export const getGigForServiceProviderController = async (req, res) => {
   try {
     const { serviceProviderId } = req.params;
-    
-    console.log("getting gigs for service provider controller id",serviceProviderId);
+
+    console.log("getting gigs for service provider controller id", serviceProviderId);
     if (!serviceProviderId) {
       return res.status(400).json({
         success: false,
@@ -120,7 +149,7 @@ export const getGigForServiceProviderController = async (req, res) => {
     const gigs = await Gig.find({ serviceProviderId: serviceProviderId });
 
     if (!gigs || gigs.length === 0) {
-      return res.status(404).json({
+      return res.status(200).json({
         success: false,
         msg: "No gigs found for this service provider",
       });
@@ -144,7 +173,7 @@ export const getAllGigsController = async (req, res) => {
     const gigs = await Gig.find();
 
     if (gigs.length === 0) {
-      return res.status(404).json({
+      return res.status(200).json({
         success: false,
         msg: "No gigs found",
       });
@@ -192,14 +221,14 @@ export const deleteGigController = async (req, res) => {
 
 export const updateGigController = async (req, res) => {
   try {
-    const { gigId } = req.params; 
+    const { gigId } = req.params;
     const { title, description, experience, price, availabilityHours, image, category } = req.body;
 
-    console.log("this is when updating gig",req.body,"and it is gig id",gigId)
+    console.log("this is when updating gig", req.body, "and it is gig id", gigId)
 
 
-    if(!gigId || !title || !description || !experience || !price || !availabilityHours) {
-        return res.status(400).json({success:false,msg:"All fields are required"});
+    if (!gigId || !title || !description || !experience || !price || !availabilityHours) {
+      return res.status(400).json({ success: false, msg: "All fields are required" });
     }
 
     const updatedData = {
@@ -253,7 +282,7 @@ export const getPendingGigsController = async (req, res) => {
     const pendingGigs = await Gig.find({ status: "pending" });
     console.log(`This is gigs" ${pendingGigs}`);
     if (!pendingGigs || pendingGigs.length === 0) {
-      return res.status(404).json({
+      return res.status(200).json({
         success: false,
         msg: "No pending gigs found",
       });
@@ -277,7 +306,7 @@ export const getApprovedGigsController = async (req, res) => {
     const approveGigs = await Gig.find({ status: "approved" });
     console.log(`This is gigs" ${approveGigs}`);
     if (!approveGigs || approveGigs.length === 0) {
-      return res.status(404).json({
+      return res.status(200).json({
         success: false,
         msg: "No approve gigs found",
       });

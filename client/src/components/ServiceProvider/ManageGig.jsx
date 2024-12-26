@@ -34,10 +34,10 @@ const ManageGigs = () => {
                     setError(response.data.msg || "Failed to fetch gigs.");
                 }
             } catch (err) {
-                if(err.status !== 404){
+                // if(err.status !== 404){
                     setError(`Server error. Could not retrieve gigs. ${err}`);
                     console.error("Error fetching gigs:", err);
-                }
+                // }
             } finally {
                 setLoading(false);
             }
@@ -95,7 +95,7 @@ const ManageGigs = () => {
                     Add Gig
                 </button>
             </div>
-            {gigs.length === 0 ? (
+            {gigs?.length === 0 ? (
                 <p>No gigs found. Add one to get started!</p>
             ) : (
                 <div className="gig-list">

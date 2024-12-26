@@ -6,7 +6,7 @@ import "../styles/GigList.css"; // Import the grid styles
 const GigList = ({ gigs, onGigClick }) => {
   return (
     <div className="gig-list">
-      {gigs.map((gig) => (
+      {gigs?.map((gig) => (
         <GigCard
           key={gig._id} // Use _id instead of id
           image={gig.image}

@@ -7,7 +7,8 @@ const quotesList = [
 //   "Opportunities don’t happen. You create them.",
 //   "Success is not in what you have, but who you are.",
 //   "The way to get started is to quit talking and begin doing.",
-  "Mohsin is the Boss and you should never argue with him."
+  // "Mohsin is the Boss and you should never argue with him."
+  "A Website Created By A Mern Stack Developer Mahr Abrar And His Employees"
 ];
 
 const Quotes = () => {
