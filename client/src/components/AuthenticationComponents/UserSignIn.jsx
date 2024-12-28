@@ -39,7 +39,7 @@ const SignIn = () => {
         <div className="sign-in-container">
             <h2>Sign In</h2>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="signin-form">
                 <div>
                     <label htmlFor="email">Email</label>
                     <input

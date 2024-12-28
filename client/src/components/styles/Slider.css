@@ -44,12 +44,12 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5) !important;
     color: white;
-    border: none;
+    border: none !important;
     padding: 10px;
-    cursor: pointer;
-    z-index: 10;
+    cursor: pointer !important;
+    z-index: 10 !important;
 }
 
 .slider-nav-btn.prev {

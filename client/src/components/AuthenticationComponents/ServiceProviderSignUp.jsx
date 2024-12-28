@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../styles/Authentication/ServiceProviderAccount.css";
 import {useServiceProviderAuth } from "../../Contexts/serviceProviderContexts";
 
 const ServiceProviderForm = () => {
@@ -147,98 +148,104 @@ const ServiceProviderForm = () => {
   };
 
   return (
-    <div>
-      <h1>Register as Service Provider</h1>
-      {successMessage && <p className="success-message">{successMessage}</p>}
-      {errors.form && <p className="error-message">{errors.form}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          {errors.email && <span className="error">{errors.email}</span>}
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-          {errors.password && <span className="error">{errors.password}</span>}
-        </div>
-        <div>
-          <label>First Name:</label>
-          <input
-            type="text"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-          />
-          {errors.firstName && <span className="error">{errors.firstName}</span>}
-        </div>
-        <div>
-          <label>Last Name:</label>
-          <input
-            type="text"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-          />
-          {errors.lastName && <span className="error">{errors.lastName}</span>}
-        </div>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-          />
-          {errors.username && <span className="error">{errors.username}</span>}
-        </div>
-        <div>
-          <label>Phone Number:</label>
-          <input
-            type="text"
-            name="phoneNumber"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-          />
-          {errors.phoneNumber && (
-            <span className="error">{errors.phoneNumber}</span>
-          )}
-        </div>
-        <div>
-          <label>Location:</label>
-          <input
-            type="text"
-            name="location"
-            value={formData.location}
-            onChange={handleChange}
-          />
-          {errors.location && <span className="error">{errors.location}</span>}
-        </div>
-        <div>
-          <label>CNIC Picture:</label>
-          <input
-            type="file"
-            name="cnicPicture"
-            accept="image/*"
-            onChange={handleFileChange}
-          />
-          {errors.cnicPicture && (
-            <span className="error">{errors.cnicPicture}</span>
-          )}
-        </div>
-        <button type="submit">Register</button>
-      </form>
-    </div>
+    <div className="service-provider-form">
+    <h1>Register as Service Provider</h1>
+    {successMessage && <p className="success-message">{successMessage}</p>}
+    {errors.form && <p className="error-message">{errors.form}</p>}
+    <form onSubmit={handleSubmit} className="service-provider-form-grid">
+      <div className="input-group">
+        <label>Email:</label>
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+        />
+        {errors.email && <span className="error">{errors.email}</span>}
+      </div>
+  
+      <div className="input-group">
+        <label>Password:</label>
+        <input
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+        />
+        {errors.password && <span className="error">{errors.password}</span>}
+      </div>
+  
+      <div className="input-group">
+        <label>First Name:</label>
+        <input
+          type="text"
+          name="firstName"
+          value={formData.firstName}
+          onChange={handleChange}
+        />
+        {errors.firstName && <span className="error">{errors.firstName}</span>}
+      </div>
+  
+      <div className="input-group">
+        <label>Last Name:</label>
+        <input
+          type="text"
+          name="lastName"
+          value={formData.lastName}
+          onChange={handleChange}
+        />
+        {errors.lastName && <span className="error">{errors.lastName}</span>}
+      </div>
+  
+      <div className="input-group">
+        <label>Username:</label>
+        <input
+          type="text"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+        />
+        {errors.username && <span className="error">{errors.username}</span>}
+      </div>
+  
+      <div className="input-group">
+        <label>Phone Number:</label>
+        <input
+          type="text"
+          name="phoneNumber"
+          value={formData.phoneNumber}
+          onChange={handleChange}
+        />
+        {errors.phoneNumber && <span className="error">{errors.phoneNumber}</span>}
+      </div>
+  
+      <div className="input-group">
+        <label>Location:</label>
+        <input
+          type="text"
+          name="location"
+          value={formData.location}
+          onChange={handleChange}
+        />
+        {errors.location && <span className="error">{errors.location}</span>}
+      </div>
+  
+      <div className="input-group">
+        <label>CNIC Picture:</label>
+        <input
+          type="file"
+          name="cnicPicture"
+          accept="image/*"
+          onChange={handleFileChange}
+        />
+        {errors.cnicPicture && <span className="error">{errors.cnicPicture}</span>}
+      </div>
+      <div className="submit-btn"> <button type="submit">Register</button></div>
+     
+    </form>
+
+  </div>
+  
   );
 };
 

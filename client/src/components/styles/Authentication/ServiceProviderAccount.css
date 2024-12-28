@@ -1,0 +1,146 @@
+/* Base styles for the form container */
+.service-provider-form {
+    max-width: 800px;
+    margin: auto;
+    margin-top: 20px;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures the button is at the bottom */
+    height: 100%; /* Make sure form uses all available height */
+}
+
+/* Heading style */
+.service-provider-form h1 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Form container using grid with 2 columns for the input fields */
+.service-provider-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns for fields */
+    gap: 20px;
+    width: 100%; /* Ensure form-grid takes the full width of the form */
+    margin-bottom: 20px; /* Adds spacing between form fields and button */
+}
+
+/* Each input group (label + input) */
+.service-provider-form-grid .input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.service-provider-form-grid .input-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #444;
+}
+
+.service-provider-form-grid .input-group input {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.service-provider-form-grid .input-group input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+.service-provider-form-grid .input-group .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Success and error messages */
+.success-message {
+    color: green;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.error-message {
+    color: red;
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Button Styling */
+.service-provider-form-grid .submit-btn {
+    display: flex;
+    justify-content: center; /* Centers the button horizontally */
+    width: 100%;
+    grid-column: span 2; /* Span across both columns */
+}
+
+.service-provider-form-grid .submit-btn button {
+    width: 100%; /* Full width button */
+    max-width: 300px; /* Max width for button */
+    padding: 14px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 20px; /* Space from inputs above */
+    margin-bottom: 20px; /* Space from the bottom */
+}
+
+.service-provider-form-grid  .submit-btn button:hover {
+    background-color: #0056b3;
+    transform: scale(1.03);
+}
+
+.service-provider-form-grid .submit-btn button:active {
+    background-color: #004494;
+    transform: scale(1);
+}
+
+/* Custom styling for specific rows */
+.service-provider-form-grid .input-group.full-width {
+    grid-column: span 2; /* This will make the field span across both columns */
+}
+
+/* Specific styling for file input */
+.input-group input[type="file"] {
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Responsive design: Adjust layout for smaller screens */
+@media (max-width: 768px) {
+    .service-provider-form {
+        padding: 20px;
+    }
+
+    .service-provider-form-grid {
+        grid-template-columns: 1fr; /* Stack all fields in a single column */
+    }
+
+    .service-provider-form h1 {
+        font-size: 22px;
+    }
+
+    .service-provider-form-grid .submit-btn button {
+        font-size: 16px;
+        padding: 12px;
+        max-width: 100%; /* Make button width 100% on smaller screens */
+    }
+}
