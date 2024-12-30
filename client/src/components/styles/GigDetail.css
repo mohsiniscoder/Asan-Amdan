@@ -1,153 +1,135 @@
-/* General container for the gig detail page */
+/* Main container to hold both sidebar and content */
 .gig-detail-container {
-    padding: 40px 20px;
-    background-color: #f9f9f9;
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  gap: 40px; /* Increased gap between sidebar and content */
+  max-width: 1200px;
+  margin: 60px auto; /* More spacing around the container */
+  padding: 40px; /* Add padding for more space */
+  background-color: #f9f9f9; /* Light background to improve readability */
+  border-radius: 12px; /* Rounded corners for a polished look */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Enhanced subtle shadow for modern design */
+}
+
+/* Sidebar for gig image and description */
+.gig-detail-sidebar {
+  flex: 0 0 360px; /* Increased sidebar width for better content fit */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* Increased gap between elements */
+  max-width: 360px;
+  margin-left: 30px; /* Left margin for spacing */
+  padding-right: 20px; /* Padding to the right of the sidebar */
+}
+
+/* Image style inside the sidebar */
+.gig-detail-sidebar img {
+  width: 100%;
+  height: 300px; /* Increased height for more prominent image */
+  object-fit: cover;
+  border-radius: 12px; /* More rounded image corners */
+  max-width: 360px; /* Adjust image width for better fit */
+  border: 4px solid #ddd; /* Subtle border around image */
+}
+
+/* Right content area */
+.gig-detail-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Increased gap between content sections */
+  font-family: 'Roboto', sans-serif; /* Use a modern font */
+  justify-content: flex-start;
+  align-items: flex-start; /* Align left for better readability */
+  text-align: left; /* Align text to the left */
+}
+
+/* Gig Title */
+.gig-detail-content h1 {
+  font-size: 40px; /* Increased font size for title */
+  font-weight: 700; /* Make the title bold */
+  color: #333;
+  margin: 0 0 20px 0; /* Add space below title */
+  line-height: 1.4; /* Improve line spacing */
+}
+
+/* Styling for general text details (price, location, etc.) */
+.gig-detail-content p {
+  font-size: 20px; /* Larger text for better readability */
+  line-height: 1.8; /* Adjust line height for easier reading */
+  color: #555;
+  margin: 10px 0; /* More margin between text paragraphs */
+  letter-spacing: 0.5px; /* Slightly increase letter-spacing for better clarity */
+}
+
+/* Bold title for detail sections */
+.gig-detail-content b {
+  font-weight: 600;
+  font-size: 20px;
+  color: #333;
+}
+
+/* Button styles */
+.gig-detail-container button{
+  width: 280px; /* Increased button width */
+  height: 60px; /* Increased height for better visibility */
+  padding: 18px; /* Added padding for more comfortable button size */
+  border: none;
+  border-radius: 8px; /* Round corners for buttons */
+  cursor: pointer;
+  font-size: 18px; /* Increased font size for buttons */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0; /* More margin between buttons */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Button styling for contact */
+button:first-child {
+  background-color: #008CBA;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 140, 202, 0.2); /* Subtle shadow for contact button */
+}
+
+/* Hover effect for contact button */
+button:first-child:hover {
+  background-color: #007B9E;
+  transform: translateY(-3px); /* Slight raise on hover */
+}
+
+/* Button styling for purchase */
+button:last-child {
+  background-color: #4CAF50;
+  color: white;
+  box-shadow: 0 4px 8px rgba(76, 175, 80, 0.2); /* Subtle shadow for purchase button */
+}
+
+/* Hover effect for purchase button */
+button:last-child:hover {
+  background-color: #45a049;
+  transform: translateY(-3px); /* Slight raise on hover */
+}
+
+/* Responsive Layout for Small Screens */
+@media screen and (max-width: 768px) {
+  .gig-detail-container {
+    flex-direction: column; /* Stack content on small screens */
+    gap: 30px;
   }
-  
-  /* Main gig detail container */
-  .gig-detail {
-    display: grid;
-    grid-template-columns: 1fr 2fr; /* Left: Image, Right: Info */
-    max-width: 1200px;
-    background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    padding: 20px;
-    gap: 20px;
+
+  .gig-detail-sidebar {
+    width: 100%; /* Sidebar takes full width on small screens */
+    text-align: center;
   }
-  
-  /* Container for the gig image */
-  .gig-detail__image-container {
+
+  .gig-detail-content {
+    width: 100%; /* Content takes full width on small screens */
+  }
+
+  /* Make buttons full width on mobile */
+  button {
     width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    overflow: hidden;
   }
-  
-  .gig-detail__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-  }
-  
-  /* Info section for gig details */
-  .gig-detail__info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  /* Gig name styling */
-  .gig-detail__name {
-    font-size: 2.2rem;
-    font-weight: bold;
-    color: #333;
-    margin: 0;
-    padding-bottom: 5px;
-    border-bottom: 2px solid #fd7e14;
-  }
-  
-  /* Profession styling */
-  .gig-detail__profession {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: #fd7e14;
-  }
-  
-  /* Gig description text */
-  .gig-detail__info p {
-    font-size: 1.1rem;
-    color: #555;
-    line-height: 1.5;
-    margin: 10px 0;
-  }
-  
-  /* Rating section */
-  .gig-detail__rating {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #333;
-    margin-top: 20px;
-  }
-  
-  /* Reviews Section */
-  .reviews {
-    margin-top: 30px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  
-  .review-box {
-    background-color: #f1f1f1;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  .review-box p {
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.5;
-  }
-  
-  .review-box strong {
-    color: #fd7e14;
-  }
-  
-  /* Button styling */
-  .gig-detail__button {
-    padding: 15px 25px;
-    background-color: #fd7e14;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    align-self: center;
-    margin-top: 30px;
-  }
-  
-  .gig-detail__button:hover {
-    background-color: #e06b12;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .gig-detail {
-      grid-template-columns: 1fr; /* Stack image and info on smaller screens */
-    }
-  
-    .reviews {
-      grid-template-columns: 1fr 1fr; /* Two columns for reviews */
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .gig-detail__name {
-      font-size: 1.8rem;
-    }
-  
-    .gig-detail__profession {
-      font-size: 1.2rem;
-    }
-  
-    .reviews {
-      grid-template-columns: 1fr; /* One column for reviews */
-    }
-  }
-  
+}
