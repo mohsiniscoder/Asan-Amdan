@@ -18,6 +18,7 @@ import PurchaseGigPage from './components/GigComponents/PurchaseGigPage';
 import ClientDashboard from './components/Dashboards/ClientDashboard';
 import { useServiceProviderAuth } from './Contexts/serviceProviderContexts';
 import { useAuth } from './Contexts/userContexts';
+import AboutPage from './Pages/AboutPage';
 const App = () => {
 
   const { userAuth, setUserAuth } = useAuth();
@@ -42,6 +43,7 @@ const App = () => {
         {/* <Route path="/gig/:id" element={<GigDetail />} /> */}
         <Route path="/provide-service" element={<ServiceProviderForm />} />
         <Route path="/gig/:gigId" element={<GigDetailPage />} />
+        <Route path ="/about" element={<AboutPage />} />
 
         {/* authenticating service provider */}
         {serviceProviderAuth?.token ?

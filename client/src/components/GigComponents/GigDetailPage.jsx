@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "../styles/GigDetail.css"
 
 const GigDetailPage = () => {
   const { gigId } = useParams(); // Get the gigId from the URL
@@ -37,22 +38,45 @@ const GigDetailPage = () => {
     <div className="gig-detail-container">
       {gig && (
         <>
-          <h1>{gig.title}</h1>
-          <img src={gig.image} alt={gig.title} style={{ width: "100%", borderRadius: "8px" }} />
-          <p><b>Description:</b> {gig.description}</p>
-          <p><b>Price:</b> ${gig.price}</p>
-          <p><b>Location:</b> {gig.location}</p>
-          <p><b>Availability:</b> {gig.availabilityHours}</p>
-          <p><b>Experience:</b> {gig.experience} years</p>
-          <button>Contact the Service Provider</button>
-          {/* Purchase Gig Button */}
-          <button onClick={handlePurchase} style={{ marginTop: "20px", backgroundColor: "#4CAF50", color: "white", padding: "10px 20px", border: "none", borderRadius: "5px", cursor: "pointer" }}>
-            Purchase Gig
-          </button>
+          {/* Sidebar - Gig Image and Description */}
+          <div className="gig-detail-sidebar">
+            <img
+              src={gig.image} // Gig image URL
+              alt={gig.title}
+              style={{ width: "100%", borderRadius: "8px" }}
+            />
+            <p><b>Description:</b> {gig.description}</p>
+          </div>
+  
+          {/* Main Content - Other Details */}
+          <div className="gig-detail-content">
+            <h1>{gig.title}</h1>
+            <p><b>Price:</b> ${gig.price}</p>
+            <p><b>Location:</b> {gig.location}</p>
+            <p><b>Availability:</b> {gig.availabilityHours}</p>
+            <p><b>Experience:</b> {gig.experience} years</p>
+  
+            {/* Buttons */}
+            <button >Contact the Service Provider</button>
+            <button
+              onClick={handlePurchase}
+              style={{
+                backgroundColor: "#4CAF50",
+                color: "white",
+                padding: "10px 20px",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+            >
+              Purchase Gig
+            </button>
+          </div>
         </>
       )}
     </div>
   );
+  
 };
 
 export default GigDetailPage;

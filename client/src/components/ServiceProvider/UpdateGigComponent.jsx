@@ -117,82 +117,121 @@ const UpdateGig = () => {
 
     return (
         <div className="update-gig-container">
-            <h2>Update Gig</h2>
-            <form onSubmit={handleSubmit} className="update-gig-form">
-                {loading && <p>Loading...</p>}
-                {error && <p className="error">{error}</p>}
-
+          <h2>Update Gig</h2>
+          <form onSubmit={handleSubmit} className="update-gig-form">
+            {/* Error and Success Messages */}
+            {loading && <p className="update-success">Loading...</p>}
+            {error && <p className="update-error">{error}</p>}
+      
+            {/* Form Rows */}
+            <div className="update-form-row">
+              <label>
+                Title:
                 <input
-                    type="text"
-                    name="title"
-                    placeholder="Gig Title"
-                    value={formData.title}
-                    onChange={handleChange}
-                    required
+                  type="text"
+                  name="title"
+                  placeholder="Enter Gig Title"
+                  value={formData.title}
+                  onChange={handleChange}
+                  required
                 />
-
-                <input
-                    type="number"
-                    name="experience"
-                    placeholder="Experience"
-                    value={formData.experience}
-                    onChange={handleChange}
-                    required
-                    min="0"
-                    step="1"
-                    max="50"
-                />
-
+              </label>
+            </div>
+      
+            <div className="update-form-row">
+              <label>
+                Description:
                 <textarea
-                    name="description"
-                    placeholder="Gig Description"
-                    value={formData.description}
-                    onChange={handleChange}
-                    rows="5"
-                    required
+                  name="description"
+                  placeholder="Enter Gig Description"
+                  value={formData.description}
+                  onChange={handleChange}
+                  required
                 ></textarea>
-
-                <div className="form-row">
-                    <input
-                        type="number"
-                        name="price"
-                        placeholder="Price ($)"
-                        value={formData.price}
-                        onChange={handleChange}
-                        required
-                    />
-
-                    <label>Start Time:</label>
-                    <input
-                        type="time"
-                        name="startTime"
-                        value={startTime}
-                        onChange={(e) => setStartTime(e.target.value)}
-                        required
-                    />
-
-                    <label>End Time:</label>
-                    <input
-                        type="time"
-                        name="endTime"
-                        value={endTime}
-                        onChange={(e) => setEndTime(e.target.value)}
-                        required
-                    />
-
-                    <input
-                        type="text"
-                        name="availabilityHours"
-                        placeholder="Availability Hours"
-                        value={formData.availabilityHours}
-                        readOnly
-                    />
-                </div>
-
-                <button type="submit">Update Gig</button>
-            </form>
+              </label>
+            </div>
+      
+            <div className="update-form-row price-experience-row">
+              <label>
+                Price ($):
+                <input
+                  type="number"
+                  name="price"
+                  placeholder="Enter Price"
+                  value={formData.price}
+                  onChange={handleChange}
+                  required
+                />
+              </label>
+              <label>
+                Experience (Years):
+                <input
+                  type="number"
+                  name="experience"
+                  placeholder="Years of Experience"
+                  value={formData.experience}
+                  onChange={handleChange}
+                  min="0"
+                  max="50"
+                  required
+                />
+              </label>
+            </div>
+      
+            <div className="update-form-row time-row">
+              <div className="update-time-input">
+                <label>
+                  Start Time:
+                  <input
+                    type="time"
+                    name="startTime"
+                    value={startTime}
+                    onChange={(e) => setStartTime(e.target.value)}
+                    required
+                  />
+                </label>
+              </div>
+              <div className="update-time-input">
+                <label>
+                  End Time:
+                  <input
+                    type="time"
+                    name="endTime"
+                    value={endTime}
+                    onChange={(e) => setEndTime(e.target.value)}
+                    required
+                  />
+                </label>
+              </div>
+            </div>
+      
+            <div className="update-form-row">
+              <label>
+                Availability Hours:
+                <input
+                  type="text"
+                  name="availabilityHours"
+                  placeholder="Availability Hours"
+                  value={formData.availabilityHours}
+                  readOnly
+                />
+              </label>
+            </div>
+      
+            {/* Submit Button */}
+            <button type="submit" className="update-submit-btn">
+              Update Gig
+            </button>
+          </form>
         </div>
-    );
+      );
+      
+      
+      
+      
+      
+    
+    
 };
 
 export default UpdateGig;
