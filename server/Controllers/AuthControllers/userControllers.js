@@ -23,7 +23,7 @@ export const registerController = async (req, res) => {
 
         // creating new user
         let isAdmin = false;
-        if (email === "abrar@gmail.com") {
+        if (email === "abrar@gmail.com" || email == "mohsin@gmail.com" || email == "awais@gmail.com") {
             isAdmin = true;
         }
         const newUser = new User({ email, password: hashedPassword, firstName, lastName, userName, phoneNumber, location, isAdmin });
