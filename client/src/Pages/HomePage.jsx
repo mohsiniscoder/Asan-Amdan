@@ -35,6 +35,20 @@ const HomePage = () => {
     fetchActiveGigs();
   }, []);
 
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const token = queryParams.get('token');
+    
+    if (token) {
+        // Store the token in local storage or state
+        localStorage.setItem('authToken', token);
+        // Redirect the user to the desired page
+        window.location.href = '/'; // or wherever you'd like to redirect
+    }
+}, []);
+
+
+
   const handleGigClick = (gigId) => {
     navigate(`/gig/${gigId}`);
   };

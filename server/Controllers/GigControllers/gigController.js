@@ -280,7 +280,7 @@ export const updateGigController = async (req, res) => {
 export const getPendingGigsController = async (req, res) => {
   try {
     const pendingGigs = await Gig.find({ status: "pending" });
-    console.log(`This is gigs" ${pendingGigs}`);
+    // console.log(`This is gigs" ${pendingGigs}`);
     if (!pendingGigs || pendingGigs.length === 0) {
       return res.status(200).json({
         success: false,
@@ -304,7 +304,7 @@ export const getPendingGigsController = async (req, res) => {
 export const getApprovedGigsController = async (req, res) => {
   try {
     const approveGigs = await Gig.find({ status: "approved" });
-    console.log(`This is gigs" ${approveGigs}`);
+    // console.log(`This is gigs" ${approveGigs}`);
     if (!approveGigs || approveGigs.length === 0) {
       return res.status(200).json({
         success: false,
@@ -312,7 +312,7 @@ export const getApprovedGigsController = async (req, res) => {
       });
     }
 
-    console.log("approve gigs:", approveGigs);
+    // console.log("approve gigs:", approveGigs);
     res.status(200).json({
       success: true,
       gigs: approveGigs,

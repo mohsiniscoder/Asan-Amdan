@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../styles/Authentication/UserSignUp.css";
+import GoogleLoginButton from "./GoogleLoginButton";
 
 const SignUp = () => {
     const [formData, setFormData] = useState({
@@ -107,6 +108,7 @@ const SignUp = () => {
                     onChange={handleChange}
                 />
                 <button type="submit">Sign Up</button>
+                <GoogleLoginButton />
             </form>
         </div>
     );
