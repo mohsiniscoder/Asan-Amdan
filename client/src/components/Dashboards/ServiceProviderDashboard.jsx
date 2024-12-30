@@ -14,10 +14,6 @@ const ServiceProviderDashboard = () => {
         switch (activeTab) {
             case "gigs":
                 return <ManageGigs/>
-            case "profile":
-                // return <Profile />;
-            case "settings":
-                // return <Settings />;
             case "Orders":
                 return <ServiceProviderOrders />;
             default:
