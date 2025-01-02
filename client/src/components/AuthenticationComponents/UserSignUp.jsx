@@ -28,7 +28,7 @@ const SignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:4000/api/v1/auth/register", formData);
+            const response = await axios.post("https://asan-amdan-server.vercel.app/api/v1/auth/register", formData);
             setSuccess("Sign-up successful! Please log in.");
             setError("");
             setFormData({

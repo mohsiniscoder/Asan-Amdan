@@ -15,7 +15,7 @@ const SignIn = () => {
 
 
         try {
-            const response = await axios.post("http://localhost:4000/api/v1/auth/login", { email, password });
+            const response = await axios.post("https://asan-amdan-server.vercel.app/api/v1/auth/login", { email, password });
             if (response.data.success) {
                 // Store token in localStorage or cookie (depending on your authentication flow)
                 localStorage.setItem("authToken", response.data.token);
