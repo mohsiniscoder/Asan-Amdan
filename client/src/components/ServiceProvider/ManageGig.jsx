@@ -27,12 +27,7 @@ const ManageGigs = () => {
                         },
                     }
                 );
-
-                if (response.data.success) {
                     setGigs(response.data.gigs);
-                } else {
-                    setError(response.data.msg || "Failed to fetch gigs.");
-                }
             } catch (err) {
                 // if(err.status !== 404){
                     setError(`Server error. Could not retrieve gigs. ${err}`);
