@@ -20,7 +20,7 @@ const ManageGigs = () => {
 
             try {
                 const response = await axios.get(
-                    `http://localhost:4000/api/v1/gig/getServiceProviderGigs/${serviceProviderAuth.user._id}`,
+                    `https://asan-amdan-py4u.vercel.app/api/v1/gig/getServiceProviderGigs/${serviceProviderAuth.user._id}`,
                     {
                         headers: {
                             Authorization: `${serviceProviderAuth.token}`,
@@ -52,7 +52,7 @@ const ManageGigs = () => {
 
         try {
             const response = await axios.delete(
-                `http://localhost:4000/api/v1/gig/deleteGig/${id}`,
+                `https://asan-amdan-py4u.vercel.app/api/v1/gig/deleteGig/${id}`,
                 {
                     headers: {
                         Authorization: `${serviceProviderAuth.token}`,
