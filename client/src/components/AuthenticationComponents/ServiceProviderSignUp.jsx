@@ -114,7 +114,7 @@ const ServiceProviderForm = () => {
 
       // Send the data as JSON
       const response = await axios.post(
-        'https://asan-amdan-server.vercel.app/api/v1/auth/serviceProviderRegister',
+        'https://asan-amdan-py4u.vercel.app/api/v1/auth/serviceProviderRegister',
         dataToSend,
         {
           headers: {
