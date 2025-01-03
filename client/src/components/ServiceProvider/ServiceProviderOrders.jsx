@@ -18,7 +18,7 @@ const ServiceProviderOrders = () => {
     }
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/v1/orders/getServiceProviderOrders/${serviceProviderId}`,
+        `https://asan-amdan-py4u.vercel.app/api/v1/orders/getServiceProviderOrders/${serviceProviderId}`,
         {
           headers: {
             Authorization: `${localStorage.getItem("Token")}`,
@@ -37,7 +37,7 @@ const ServiceProviderOrders = () => {
   const handleApprove = async (orderId) => {
     try {
       await axios.put(
-        `http://localhost:4000/api/v1/orders/updateServiceProviderOrderStatus/${orderId}`,
+        `https://asan-amdan-py4u.vercel.app/api/v1/orders/updateServiceProviderOrderStatus/${orderId}`,
         { status: "in-progress" },
         {
           headers: {
@@ -55,7 +55,7 @@ const ServiceProviderOrders = () => {
   const handleReject = async (orderId) => {
     try {
       await axios.put(
-        `http://localhost:4000/api/v1/orders/updateServiceProviderOrderStatus/${orderId}`,
+        `https://asan-amdan-py4u.vercel.app/api/v1/orders/updateServiceProviderOrderStatus/${orderId}`,
         { status: "cancelled" },
         {
           headers: {
