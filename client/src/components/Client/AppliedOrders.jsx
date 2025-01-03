@@ -25,7 +25,7 @@ const AppliedOrders = () => {
         if (!token) throw new Error("Unauthorized: No token found");
 
         const response = await axios.get(
-          `http://localhost:4000/api/v1/orders/getClientOrders/${clientId}`,
+          `https://asan-amdan-py4u.vercel.app/api/v1/orders/getClientOrders/${clientId}`,
           {
             headers: { Authorization: token },
           }
@@ -65,7 +65,7 @@ const AppliedOrders = () => {
       if (!token) throw new Error("Unauthorized: No token found");
 
       const response = await axios.put(
-        `http://localhost:4000/api/v1/orders/updateClientOrderStatus/${orderId}`,
+        `https://asan-amdan-py4u.vercel.app/api/v1/orders/updateClientOrderStatus/${orderId}`,
         {status:""},
         {
           headers: { Authorization: token },
