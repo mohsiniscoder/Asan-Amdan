@@ -23,7 +23,7 @@ const PurchaseGigPage = () => {
   const fetchGigDetails = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:4000/api/v1/gig/getGigById/${gigId}`
+        `https://asan-amdan-py4u.vercel.app/api/v1/gig/getGigById/${gigId}`
       );
       const gigData = response.data.gig;
       setGig(gigData);
@@ -66,7 +66,7 @@ const PurchaseGigPage = () => {
       }
 
       const response = await axios.post(
-        `http://localhost:4000/api/v1/orders/addOrder`,
+        `https://asan-amdan-py4u.vercel.app/api/v1/orders/addOrder`,
         {
           clientId,
           serviceProviderId,
