@@ -18,7 +18,7 @@ const HomePage = () => {
 
   const fetchActiveGigs = async () => {
     try {
-      const response = await axios.get("https://asan-amdan-py4u.vercel.app/api/v1/gig/getApprovedGigs", {
+      const response = await axios.get("https://asan-amdan-py4u.vercel.app/api/v1/gig/getAllGigs", {
         headers: {
           Authorization: `${localStorage.getItem("authToken")}`,
         },
