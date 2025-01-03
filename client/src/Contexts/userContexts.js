@@ -30,7 +30,7 @@ const AuthProvider=({children})=>{
     useEffect(() => {
         const sendRequest = async () => {
             try {
-                const response = await axios.post("http://localhost:4000/api/v1/auth/checkuser", {},
+                const response = await axios.post("https://asan-amdan-py4u.vercel.app/api/v1/auth/checkuser", {},
                     {
                         headers: {
                             Authorization: userAuth?.token,
