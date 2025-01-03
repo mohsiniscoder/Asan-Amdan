@@ -28,7 +28,7 @@ const CreateGig = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          https://asan-amdan-py4u.vercel.app/api/v1/categories/getCategoriesByType",
+          "https://asan-amdan-py4u.vercel.app/api/v1/categories/getCategoriesByType",
           {
             params: { isTechnical: gigData.isTechnical },
             headers: {
