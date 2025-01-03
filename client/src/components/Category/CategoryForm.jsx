@@ -25,7 +25,7 @@ const Header = () => {
         const token = localStorage.getItem("authToken");
         const newCategory = { name, isTechnical: type === "technical" };
         const response = await axios.post(
-          "http://localhost:4000/api/v1/categories/addCategory",
+          "https://asan-amdan-py4u.vercel.app/api/v1/categories/addCategory",
           newCategory,
           {
             headers: {
@@ -44,7 +44,7 @@ const Header = () => {
   const deleteCategory = async (id) => {
     try {
       const token = localStorage.getItem("authToken");
-      await axios.delete(`http://localhost:4000/api/v1/categories/deleteCategory/${id}`, {
+      await axios.delete(`https://asan-amdan-py4u.vercel.app/api/v1/categories/deleteCategory/${id}`, {
         headers: { Authorization: token },
       });
       setCategories(categories.filter((category) => category._id !== id));
@@ -59,7 +59,7 @@ const Header = () => {
     try {
       const token = localStorage.getItem("authToken");
       const response = await axios.put(
-        `http://localhost:4000/api/v1/categories/updateCategory/${editingCategory._id}`,
+        `https://asan-amdan-py4u.vercel.app/api/v1/categories/updateCategory/${editingCategory._id}`,
         editingCategory,
         {
           headers: { Authorization: token },
