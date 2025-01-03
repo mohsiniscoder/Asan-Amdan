@@ -26,6 +26,7 @@ const HomePage = () => {
       setGigs(response.data.gigs);
     } catch (err) {
       setError("Failed to fetch gigs. Please try again.");
+      console.log("error while fetching gigs in home page",err");
     } finally {
       setLoading(false);
     }
