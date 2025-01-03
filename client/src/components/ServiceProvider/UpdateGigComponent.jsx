@@ -31,7 +31,7 @@ const UpdateGig = () => {
                 setLoading(true);
                 try {
                     const response = await axios.get(
-                        `http://localhost:4000/api/v1/gig/getGigById/${id}`,
+                        `https://asan-amdan-py4u.vercel.app/api/v1/gig/getGigById/${id}`,
                         {
                             headers: {
                                 Authorization: `${serviceProviderAuth.token}`,
