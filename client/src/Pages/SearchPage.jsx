@@ -15,7 +15,7 @@ const SearchPage = () => {
   const fetchGigsByCategory = async (categoryId) => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:4000/api/v1/gig/getGigByCategoryId/${categoryId}`);
+      const response = await axios.get(`https://asan-amdan-py4u.vercel.app/api/v1/gig/getGigByCategoryId/${categoryId}`);
       setGigs(response.data.gigs);
     } catch (err) {
       
