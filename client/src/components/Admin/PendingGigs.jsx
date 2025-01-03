@@ -9,7 +9,7 @@ const PendingGigs = () => {
   // Fetch pending gigs
   const fetchPendingGigs = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/api/v1/gig/getPendingGigs", {
+      const response = await axios.get("https://asan-amdan-py4u.vercel.app/api/v1/gig/getPendingGigs", {
         headers: {
           Authorization: `${localStorage.getItem("authToken")}`,
         },
@@ -26,7 +26,7 @@ const PendingGigs = () => {
   const updateGigStatus = async (gigId, status) => {
     try {
       const response = await axios.put(
-        `http://localhost:4000/api/v1/gig/updateGigStatus/${gigId}`,
+        `https://asan-amdan-py4u.vercel.app/api/v1/gig/updateGigStatus/${gigId}`,
         { status },
         {
           headers: {
