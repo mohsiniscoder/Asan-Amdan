@@ -31,7 +31,7 @@ const ServiceProviderAuth=({children})=>{
     useEffect(() => {
         const sendRequest = async () => {
             try {
-                const response = await axios.post("http://localhost:4000/api/v1/auth/checkServiceProvider", {},
+                const response = await axios.post("https://asan-amdan-py4u.vercel.app/api/v1/auth/checkServiceProvider", {},
                     {
                         headers: {
                             Authorization: serviceProviderAuth?.token,
