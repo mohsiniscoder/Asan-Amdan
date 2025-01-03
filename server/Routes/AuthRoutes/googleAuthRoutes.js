@@ -13,7 +13,7 @@ const router = express.Router();
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 
-console.log("this is client id and secret",GOOGLE_CLIENT_ID,GOOGLE_CLIENT_SECRET);
+console.log("this is client id",GOOGLE_CLIENT_ID," and secret",GOOGLE_CLIENT_SECRET);
 
 passport.use(
     new GoogleStrategy(
