@@ -2,7 +2,7 @@ import React from "react";
 
 const GoogleLoginButton = () => {
   const handleGoogleLogin = () => {
-    window.open("http://localhost:4000/api/v1/auth/google", "_self");
+    window.open("https://asan-amdan-py4u.vercel.app/api/v1/auth/google", "_self");
   };
 
   return (
