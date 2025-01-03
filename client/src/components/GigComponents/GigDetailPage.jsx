@@ -13,7 +13,7 @@ const GigDetailPage = () => {
   // Fetch the gig details
   const fetchGigDetails = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000/api/v1/gig/getGigById/${gigId}`);
+      const response = await axios.get(`https://asan-amdan-py4u.vercel.app/api/v1/gig/getGigById/${gigId}`);
       setGig(response.data.gig);
     } catch (err) {
       setError("Failed to fetch gig details. Please try again.");
